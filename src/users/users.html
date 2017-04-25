@@ -1,0 +1,13 @@
+<template>
+	<require from="../styles/users.less"></require>
+
+	<h3>Contacts will show below</h3>
+	<div repeat.for="user of users">
+		<div class="user-box">
+			<div class="login">${user.login}</div>
+			<div class="avatar-box">
+				<img class="avatar" src="${user.avatar_url}" alt="">
+			</div>
+		</div>
+	</div>
+</template>

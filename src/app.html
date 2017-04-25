@@ -1,0 +1,8 @@
+<template>
+	<require from="./styles/page.less"></require>
+	<h1>${message}</h1>
+	<a route-href="route: users">Go to Users</a>
+	<a route-href="route: weather">Go to Weather</a>
+	<div>Below is the view section, populated by the module template corresponding to the router (and reflected in the page URL)</div>
+	<router-view class="router-view"></router-view>
+</template>
