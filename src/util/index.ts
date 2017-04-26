@@ -2,7 +2,7 @@ import { FrameworkConfiguration, PLATFORM } from 'aurelia-framework';
 
 export function configure(config: FrameworkConfiguration): void {
 	config.globalResources([
-		"./converters",
-		"./rest"
+		PLATFORM.moduleName("./converters"),
+		PLATFORM.moduleName("./rest")
 	]);
 }

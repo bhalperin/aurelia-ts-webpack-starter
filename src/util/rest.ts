@@ -1,7 +1,9 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
+import { noView } from 'aurelia-templating';
 
 @inject(HttpClient)
+@noView()
 export class Rest {
 	constructor(public http: HttpClient) {
 		http.configure(config => {

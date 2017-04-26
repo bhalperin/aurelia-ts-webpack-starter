@@ -58,9 +58,6 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./src/index.html"
 		}),
-    	new AureliaPlugin(),
-		new ModuleDependenciesPlugin({
-			"converters": [ "./util/converters" ]
-		})
+    	new AureliaPlugin()
 	]
 };
