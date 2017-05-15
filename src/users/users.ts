@@ -9,8 +9,11 @@ export class Users {
 
 	constructor(public http: HttpClient) {
 		this.rest = new Rest(http);
+	}
+
+	attached(): void {
 		this.rest.getUsers("users").then(response => {
-			this.users = response
+			this.users = response;
 		});
 	}
 }

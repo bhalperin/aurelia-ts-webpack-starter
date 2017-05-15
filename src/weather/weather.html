@@ -1,16 +1,22 @@
 <template>
+	<require from="../styles/weather.less"></require>
+
 	<section class="au-animate">
 		<div>
 			<form role="form" submit.delegate="submit()">
 				<h2>${heading}</h2>
 				<div class="form-group">
-					<input type="text" class="form-control" value.bind="city" placeholder="City" />
+					City: <input type="text" class="form-control" value.bind="city" placeholder="City" />
+					<label>Uppercased:</label>
+					<span class="converted-city">${selectedCity | upper}</span>
 				</div>
 				<div class="form-group">
-					<label>Selected City:</label>
-					<p class="help-block">${selectedCity | upper}</p>
+					<p/>
+					<label>Current Weather Conditions:</label>
+					<span class="current-weather" show.bind="currentWeather">${weather}</span>
+					<span class="no-data" show.bind="!currentWeather">N/A</span>
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-default">Check Temperature</button>
 			</form>
 		</div>
 	</section>

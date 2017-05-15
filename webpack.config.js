@@ -59,5 +59,8 @@ module.exports = {
 			template: "./src/index.html"
 		}),
     	new AureliaPlugin()
-	]
+	],
+	devServer: {
+		port: 3333
+	}
 };
