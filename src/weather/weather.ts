@@ -2,13 +2,23 @@ import { inject, computedFrom } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import { Rest } from '../util/rest';
 
+class MapOptions {
+	address: string;
+	zoom: number;
+}
+
 @inject(HttpClient)
 export class Weather {
 	heading: string = "Weather in selected city";
 	city: string = "New York";
+	address: string;
 	apiKey: string = "37cb5829e9494a46ae209ab5417df674";  // API key from https://www.weatherbit.io
 	rest: Rest;
 	currentWeather;
+	mapOptions: MapOptions = {
+		address: "",
+		zoom: 12
+	};
 
 	constructor(public http: HttpClient) {
 		this.rest = new Rest(http);
@@ -43,6 +53,7 @@ export class Weather {
 		this.rest.getWeatherCurrentGeosearch(this.apiKey, this.city)
 		.then(response => {
 			this.currentWeather = response;
+			this.mapOptions.address = `${this.city}, ${this.currentWeather.data[0].country_code}`;
 		})
 		.catch(error => {
 			this.currentWeather = null;
