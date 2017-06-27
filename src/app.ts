@@ -1,5 +1,6 @@
 import { PLATFORM } from "aurelia-framework";
 import { Router, RouterConfiguration, RouteConfig } from "aurelia-router";
+import { Firebase } from './firebase/firebase';
 
 export class App {
 	router: Router;
@@ -29,5 +30,7 @@ export class App {
 		config.map(routes);
 		this.router = router;
 		config.title = "BENNY";
+
+		new Firebase().init();
 	}
 }

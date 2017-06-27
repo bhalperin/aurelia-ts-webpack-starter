@@ -15,6 +15,7 @@ export class Weather {
 	apiKey: string = "37cb5829e9494a46ae209ab5417df674";  // API key from https://www.weatherbit.io
 	rest: Rest;
 	currentWeather;
+	gmap;
 	mapOptions: MapOptions = {
 		address: "",
 		zoom: 12
@@ -22,6 +23,7 @@ export class Weather {
 
 	constructor(public http: HttpClient) {
 		this.rest = new Rest(http);
+		// this.map = new GoogleMaps();
 	}
 
 	attached(): void {
@@ -53,7 +55,9 @@ export class Weather {
 		this.rest.getWeatherCurrentGeosearch(this.apiKey, this.city)
 		.then(response => {
 			this.currentWeather = response;
+			this.gmap.clearMarkers();
 			this.mapOptions.address = `${this.city}, ${this.currentWeather.data[0].country_code}`;
+			// console.log("Map:", this.gmap);
 		})
 		.catch(error => {
 			this.currentWeather = null;
