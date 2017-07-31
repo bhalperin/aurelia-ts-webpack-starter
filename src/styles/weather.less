@@ -3,7 +3,32 @@
 }
 
 .current-weather {
-	font-weight: bold;
+	[class*="col-"] {
+		padding: 0;
+	}
+
+	.current-weather-icon {
+		display: inline-block;
+		vertical-align: middle;
+		width: 48px;
+	}
+
+	.temperature {
+		display: inline-block;
+		font-size: 2em;
+		height: 48px;
+	}
+
+	.temperature-units {
+		sup {
+			top: -1em;
+		}
+	}
+
+	.weather-description {
+		text-align: center;
+		font-size: 2rem;
+	}
 }
 
 .no-data {

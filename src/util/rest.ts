@@ -31,6 +31,15 @@ export class Rest {
 			})
 			.catch(error => {
 				console.error(error);
+				return {
+					error: error
+				};
 			});
+	}
+
+	public getWeatherIconUrl(key: string, icon: string): string {
+		const url = `https://www.weatherbit.io/static/img/icons/${icon}.png?key=${key}`;
+
+		return url;
 	}
 }
