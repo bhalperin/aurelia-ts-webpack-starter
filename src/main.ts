@@ -10,7 +10,10 @@ export async function configure(aurelia: Aurelia) {
 	aurelia.use
 		.standardConfiguration()
 		.developmentLogging()
+		.globalResources(PLATFORM.moduleName("bootstrap/dist/css/bootstrap.css"))
 		.feature(PLATFORM.moduleName("util/index"))
+		.feature(PLATFORM.moduleName("shared/elements/index"))
+		//.plugin(PLATFORM.moduleName("aurelia-bootstrap"))
 		.plugin(PLATFORM.moduleName("aurelia-google-maps"), config => {
 			config.options(mapsPluginOptions);
 		});

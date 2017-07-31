@@ -29,7 +29,7 @@ export class App {
 		];
 		config.map(routes);
 		this.router = router;
-		config.title = "BENNY";
+		config.title = "BENNY HALPERIN";
 
 		new Firebase().init();
 	}
