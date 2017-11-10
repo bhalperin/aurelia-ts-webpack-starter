@@ -1,31 +1,27 @@
-import { inject, computedFrom, observable } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
-import { Rest } from '../util/rest';
-
-class MapOptions {
-	address: string;
-	zoom: number;
-}
+import { HttpClient } from "aurelia-fetch-client";
+import { computedFrom, inject, observable } from "aurelia-framework";
+import { MapOptions } from "./../util/maps";
+import { Rest } from "./../util/rest";
 
 @inject(HttpClient)
 export class Weather {
-	heading: string = "Weather in selected city";
-	city: string = "New York";
-	cityToWeather: string;
-	address: string;
-	apiKey: string = "37cb5829e9494a46ae209ab5417df674";  // API key from https://www.weatherbit.io
-	rest: Rest;
-	currentWeather;
-	error: string;
-	iconUrl: string;
-	weatherWidget;
-	weatherWidget2;
-	gmap;
-	mapOptions: MapOptions = {
+	public heading: string = "Weather in selected city";
+	public city: string = "New York";
+	public cityToWeather: string;
+	public address: string;
+	public apiKey: string = "37cb5829e9494a46ae209ab5417df674";  // API key from https://www.weatherbit.io
+	public rest: Rest;
+	public currentWeather;
+	public error: string;
+	public iconUrl: string;
+	public weatherWidget;
+	public weatherWidget2;
+	public gmap;
+	public mapOptions: MapOptions = {
 		address: "",
 		zoom: 12
 	};
-	myClass: string = Math.random() > 0.5 ? "benny" : "";
+	public myClass: string = Math.random() > 0.5 ? "benny" : "";
 
 	constructor(public http: HttpClient) {
 		this.rest = new Rest(http);
@@ -33,15 +29,15 @@ export class Weather {
 		// this.map = new GoogleMaps();
 	}
 
-	attached(): void {
-		//this.getWeatherCurrentGeosearch();
+	public attached(): void {
+		// this.getWeatherCurrentGeosearch();
 	}
-	
+
 	get selectedCity(): string {
 		return this.city;
 	}
 
-	//@computedFrom("selectedCity")
+	// @computedFrom("selectedCity")
 	get weather(): string {
 		let valueToDisplay = "City not found";
 
@@ -54,9 +50,9 @@ export class Weather {
 		return valueToDisplay;
 	}
 
-	submit() {
-		//this.weatherWidget.getWeatherCurrentGeosearch();
-		//this.weatherWidget2.getWeatherCurrentGeosearch();
+	public submit() {
+		// this.weatherWidget.getWeatherCurrentGeosearch();
+		// this.weatherWidget2.getWeatherCurrentGeosearch();
 		this.cityToWeather = this.city;
 	}
 
@@ -64,7 +60,7 @@ export class Weather {
 		this.rest.getWeatherCurrentGeosearch(this.apiKey, this.city)
 		.then((response: any) => {
 			if (!response) {
-				throw "No response";
+				throw new Error("No response");
 			}
 			if (response.error) {
 				throw response.error;
@@ -78,7 +74,7 @@ export class Weather {
 				this.gmap.clearMarkers();
 			}
 			this.mapOptions.address = newAddress;
-			//console.log("Map:", newAddress);
+			// console.log("Map:", newAddress);
 		})
 		.catch(error => {
 			this.currentWeather = null;

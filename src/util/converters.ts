@@ -1,5 +1,5 @@
 export class UpperValueConverter {
-	toView(value: string): string {
+	public toView(value: string): string {
 		return value && value.toUpperCase();
 	}
 }

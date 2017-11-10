@@ -1,17 +1,17 @@
-import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
-import { Rest } from '../util/rest';
+import { HttpClient } from "aurelia-fetch-client";
+import { inject } from "aurelia-framework";
+import { Rest } from "../util/rest";
 
 @inject(HttpClient)
 export class Users {
-	rest: Rest;
-	users;
+	public rest: Rest;
+	public users;
 
 	constructor(public http: HttpClient) {
 		this.rest = new Rest(http);
 	}
 
-	attached(): void {
+	public attached(): void {
 		this.rest.getUsers("users").then(response => {
 			this.users = response;
 		});

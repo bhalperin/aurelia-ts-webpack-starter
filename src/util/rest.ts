@@ -1,6 +1,6 @@
-import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
-import { noView } from 'aurelia-templating';
+import { HttpClient } from "aurelia-fetch-client";
+import { inject } from "aurelia-framework";
+import { noView } from "aurelia-templating";
 
 @inject(HttpClient)
 @noView()
@@ -27,12 +27,12 @@ export class Rest {
 				if (response.status === 200) {
 					return response.json();
 				}
-				throw "Invalid city";
+				throw new Error("Invalid city");
 			})
 			.catch(error => {
 				console.error(error);
 				return {
-					error: error
+					error
 				};
 			});
 	}

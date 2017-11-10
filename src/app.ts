@@ -1,12 +1,12 @@
 import { PLATFORM } from "aurelia-framework";
-import { Router, RouterConfiguration, RouteConfig } from "aurelia-router";
-import { Firebase } from './firebase/firebase';
+import { RouteConfig, Router, RouterConfiguration } from "aurelia-router";
+import { Firebase } from "./firebase/firebase";
 
 export class App {
-	router: Router;
-	message: string = "Aurelia: this header is always visible";
+	public router: Router;
+	public message: string = "Aurelia: this header is always visible";
 
-	configureRouter(config: RouterConfiguration, router: Router) {
+	public configureRouter(config: RouterConfiguration, router: Router) {
 		const routes: RouteConfig[] = [
 			{
 				route: "",
