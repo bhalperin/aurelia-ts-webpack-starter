@@ -6,9 +6,9 @@ export class Firebase {
 		apiKey: "AIzaSyCXx_EKBDzc4XM22EgMwFNnUqzFzmIP4Wc",
 		authDomain: "lithe-style-815.firebaseapp.com",
 		databaseURL: "https://lithe-style-815.firebaseio.com",
+		messagingSenderId: "127477820241",
 		projectId: "lithe-style-815",
-		storageBucket: "lithe-style-815.appspot.com",
-		messagingSenderId: "127477820241"
+		storageBucket: "lithe-style-815.appspot.com"
 	};
 
 	public init() {
