@@ -1,6 +1,6 @@
 import { PLATFORM } from "aurelia-framework";
 import { RouteConfig, Router, RouterConfiguration } from "aurelia-router";
-import { Firebase } from "./firebase/firebase";
+// import { Firebase } from "./firebase/firebase";
 
 export class App {
 	public router: Router;
@@ -9,21 +9,21 @@ export class App {
 	public configureRouter(config: RouterConfiguration, router: Router) {
 		const routes: RouteConfig[] = [
 			{
-				route: "",
-				name: "home",
 				moduleId: PLATFORM.moduleName("home/home"),
+				name: "home",
+				route: "",
 				title: "Home"
 			},
 			{
-				route: "users",
-				name: "users",
 				moduleId: PLATFORM.moduleName("users/users"),
+				name: "users",
+				route: "users",
 				title: "Users"
 			},
 			{
-				route: "weather",
-				name: "weather",
 				moduleId: PLATFORM.moduleName("weather/weather"),
+				name: "weather",
+				route: "weather",
 				title: "Weather"
 			}
 		];
@@ -31,6 +31,6 @@ export class App {
 		this.router = router;
 		config.title = "BENNY HALPERIN";
 
-		new Firebase().init();
+		// new Firebase().init();
 	}
 }

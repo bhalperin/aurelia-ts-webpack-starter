@@ -6,19 +6,27 @@ const optimize = webpack.optimize;
 
 module.exports = {
 	entry: {
-		main: "./src/main.ts",
-		vendor: [ "aurelia-bootstrapper" ]
+		//main: "./src/main.ts",
+		main: [ "aurelia-bootstrapper" ]
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "[name].js",
-		chunkFilename: "[name].[chunkhash].js"
+		filename: "[name].js"
 	},
 	resolve: {
 		extensions: [".ts", ".js"],
 		modules: ["src", "node_modules"].map(x => path.resolve(x))
 	},
+	devServer: {
+		contentBase: path.resolve(__dirname, "dist"),
+		// serve index.html for all 404 (required for push-state)
+		historyApiFallback: true
+	},
+	mode: "development",
 	devtool: "inline-source-map",
+	optimization: {
+		minimize: false
+	},
 	module: {
 		rules: [
 			{
@@ -52,7 +60,7 @@ module.exports = {
 			},
 			{
 				test: /\.ts$/i,
-				use: "awesome-typescript-loader"
+				use: "ts-loader"
 			},
 			{
 				test: /\.html$/i,
@@ -78,9 +86,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new optimize.CommonsChunkPlugin({
-			names: [ "vendor", "manifest" ]
-		}),
 		new HtmlWebpackPlugin({
 			template: "./src/index.html"
 		}),

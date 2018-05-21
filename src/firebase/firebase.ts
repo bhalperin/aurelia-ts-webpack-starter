@@ -1,3 +1,4 @@
+/*
 import * as firebase from "firebase";
 
 export class Firebase {
@@ -15,3 +16,4 @@ export class Firebase {
 		this.app = firebase.initializeApp(this.appConfig);
 	}
 }
+*/
