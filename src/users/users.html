@@ -1,12 +1,27 @@
 <template>
+	<require from="./user"></require>
 	<require from="../styles/users.less"></require>
 
-	<h3>Users will show below</h3>
-	<div repeat.for="user of users">
-		<div class="user-box">
-			<div class="login">${user.login}</div>
-			<div class="avatar-box">
-				<img class="avatar" src="${user.avatar_url}" alt="">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Showing users ${firstUser} to ${lastUser} <button click.trigger="getUsers()">Next</button></h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1" repeat.for="user of users">
+				<user user.bind="user"></user>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="selected-user" show.bind="selectedUser">
+					<div class="user-name" show.bind="selectedUser.name">${selectedUser.name}</div>
+					<div class="user-location" show.bind="selectedUser.location">From ${selectedUser.location}</div>
+					<div class="avatar-box">
+						<img class="avatar" src="${selectedUser.avatarUrl}" alt="">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

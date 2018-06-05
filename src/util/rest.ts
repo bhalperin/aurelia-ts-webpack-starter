@@ -12,10 +12,16 @@ export class Rest {
 		});
 	}
 
-	public getUsers(url: string): Promise<Response> {
-		this.http.baseUrl = "https://api.github.com/";
+	public async getUsers(url: string): Promise<any[]> {
+		this.http.baseUrl = "https://api.github.com/users";
 
 		return this.http.fetch(url).then(response => response.json());
+	}
+
+	public async getUser(user: string): Promise<any> {
+		this.http.baseUrl = "https://api.github.com/users/";
+
+		return this.http.fetch(user).then(response => response.json());
 	}
 
 	public getWeatherCurrentGeosearch(key: string, params: string): Promise<Response> {
