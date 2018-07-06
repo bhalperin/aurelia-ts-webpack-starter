@@ -5,10 +5,12 @@
 	"author": "Benny Halperin",
 	"license": "MIT",
 	"scripts": {
+		"clean": "rimraf dist",
 		"lint": "tslint src/**/*.ts",
+		"prebuild": "npm run clean",
+		"build": "webpack --config webpack.prod.js --mode=production",
 		"watch": "yarn webpack-dev-server --config webpack.dev.js --hot --inline --progress",
-		"_watch": "webpack-dashboard webpack-dev-server --config webpack.dev.js --hot --inline --progress",
-		"build:prod": ""
+		"_watch": "webpack-dashboard webpack-dev-server --config webpack.dev.js --hot --inline --progress"
 	},
 	"devDependencies": {
 		"@types/jasmine": "^2.8.7",

@@ -1,8 +1,22 @@
 <template>
 	<require from="./styles/page.less"></require>
-	<h1>${message}</h1>
-	<a route-href="route: users">Go to Users</a>
-	<a route-href="route: weather">Go to Weather</a>
-	<div>Below is the view section, populated by the module template corresponding to the router (and reflected in the page URL)</div>
+	<div class="container-fluid header">
+		<div class="row caption">
+			<div class="col-12">
+				<h1>${message}</h1>
+			</div>
+		</div>
+		<div class="row header-nav">
+			<div class="col-12">
+				<a route-href="route: users">Go to Users</a>
+				<a route-href="route: weather">Go to Weather</a>
+			</div>
+		</div>
+		<div class="row description">
+			<div class="col-12">
+				<div>Below is the view section, populated by the module template corresponding to the router (and reflected in the page URL)</div>
+			</div>
+		</div>
+	</div>
 	<router-view class="router-view"></router-view>
 </template>

@@ -36,6 +36,8 @@ export class Users {
 		this.users = response.map(u => {
 			return {
 				avatarUrl: u.avatar_url,
+				bio: u.bio,
+				blog: u.blog,
 				id: u.id,
 				location: u.location,
 				login: u.login,

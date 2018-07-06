@@ -24,6 +24,8 @@ export class User {
 
 		this.user = {
 			avatarUrl: user.avatar_url,
+			bio: user.bio,
+			blog: user.blog,
 			id: user.id,
 			location: user.location,
 			login: user.login,
