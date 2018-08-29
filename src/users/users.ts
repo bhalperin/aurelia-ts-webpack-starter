@@ -49,4 +49,8 @@ export class Users {
 			this.lastUser = this.users[this.users.length - 1].id;
 		}
 	}
+
+	public flipUsersToFront() {
+		this.ea.publish("flipToFront");
+	}
 }

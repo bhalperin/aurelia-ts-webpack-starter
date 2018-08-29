@@ -5,7 +5,11 @@
 	<div class="container-fluid users-view">
 		<div class="row header">
 			<div class="col-md-8">
-				<h4>Showing users ${firstUser} to ${lastUser} <button click.trigger="getUsers()">Next</button></h4>
+				<h4>
+					Showing users ${firstUser} to ${lastUser}
+					<button class="btn btn-primary" click.trigger="getUsers()">Next</button>
+					<button class="btn btn-primary" click.trigger="flipUsersToFront()">Show All Faces</button>
+				</h4>
 			</div>
 		</div>
 		<div class="row">

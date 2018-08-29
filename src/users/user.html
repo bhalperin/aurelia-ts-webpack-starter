@@ -1,8 +1,28 @@
 <template>
-	<div class="user-box" click.trigger="getUser(user.login)">
+	<require from="font-awesome/less/font-awesome.less"></require>
+
+	<!-- <div class="user-box" click.delegate="getUser(user.login)">
 		<div class="login">${user.login}</div>
 		<div class="avatar-box">
 			<img class="avatar" src="${user.avatarUrl}" alt="">
+		</div>
+	</div> -->
+	<div class="scene">
+		<div element.ref="cardPanel" class="card-panel">
+			<div class="card">
+				<img src="${user.avatarUrl}" alt="Avatar" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">${user.login} <i class="fa fa-file-text icon" click.delegate="getUser(user.login)"></i></h5>
+				</div>
+			</div>
+			<div class="card back">
+				<div class="card-body">
+					<h5 class="card-title user-name">${user.name} <i class="fa fa-id-badge icon" click.delegate="flipUser()"></i></h5>
+					<div class="card-text user-location" show.bind="user.location">${user.location}</div>
+					<div class="card-text user-bio" show.bind="user.bio">${user.bio}</div>
+					<div class="card-text user-blog" show.bind="user.blog"><a href="${user.blog}" target="_blank">${user.blog}</a></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

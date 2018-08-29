@@ -9,10 +9,25 @@ export class User {
 	@bindable public user: IUser;
 	private ea: EventAggregator;
 	private rest: Rest;
+	private cardPanel: Element;
+	private isUserRetrieved: boolean = false;
+	private readonly FLIPPED_CLASS: string = "is-flipped";
 
 	constructor(private eventAggragator: EventAggregator, public http: HttpClient) {
 		this.ea = eventAggragator;
 		this.rest = new Rest(http);
+
+		this.subscribe();
+	}
+
+	public attached() {
+		this.isUserRetrieved = false;
+	}
+
+	public subscribe(): void {
+		this.ea.subscribe("flipToFront", () => {
+			this.cardPanel.classList.remove(this.FLIPPED_CLASS);
+		});
 	}
 
 	public publish(user): void {
@@ -20,6 +35,12 @@ export class User {
 	}
 
 	public async getUser(userLogin: string) {
+		this.flipUser();
+
+		if (this.isUserRetrieved) {
+			return;
+		}
+
 		const user = await this.rest.getUser(userLogin);
 
 		this.user = {
@@ -31,6 +52,11 @@ export class User {
 			login: user.login,
 			name: user.name
 		} as IUser;
-		this.publish(this.user);
+		// this.publish(this.user);
+		this.isUserRetrieved = true;
+	}
+
+	public flipUser() {
+		this.cardPanel.classList.toggle(this.FLIPPED_CLASS);
 	}
 }
