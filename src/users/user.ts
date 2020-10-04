@@ -9,7 +9,7 @@ export class User {
 	@bindable public user: IUser;
 	private ea: EventAggregator;
 	private rest: Rest;
-	private cardPanel: Element;
+	private cardPanel: HTMLElement;
 	private isUserRetrieved: boolean = false;
 	private readonly FLIPPED_CLASS: string = "is-flipped";
 

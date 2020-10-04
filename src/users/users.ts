@@ -2,7 +2,7 @@ import { EventAggregator } from "aurelia-event-aggregator";
 import { HttpClient } from "aurelia-fetch-client";
 import { inject } from "aurelia-framework";
 import { Rest } from "../util/rest";
-import { IUser } from "./users-data";
+import { ICategory, IUser } from "./users-data";
 
 @inject(EventAggregator, HttpClient)
 export class Users {
@@ -12,6 +12,7 @@ export class Users {
 	private firstUser: number = 0;
 	private lastUser: number = 0;
 	private ea: EventAggregator;
+	private categories: ICategory[];
 
 	constructor(private eventAggragator: EventAggregator, public http: HttpClient) {
 		this.ea = eventAggragator;
@@ -22,6 +23,29 @@ export class Users {
 
 	public attached(): void {
 		this.getUsers();
+
+		this.categories = [
+			{
+				node: { title: "Sir" },
+				tasks: [
+					[
+						{ title: "Me" },
+						{ title: "You" },
+						{ title: "Her" }
+					]
+				]
+			},
+			{
+				node: { title: "Esquire" },
+				tasks: [
+					[
+						{ title: "Me" },
+						{ title: "You" },
+						{ title: "Her" }
+					]
+				]
+			}
+		];
 	}
 
 	public subscribe(): void {
@@ -52,5 +76,9 @@ export class Users {
 
 	public flipUsersToFront() {
 		this.ea.publish("flipToFront");
+	}
+
+	public onSelectUser(user: IUser) {
+		this.selectedUser = user;
 	}
 }

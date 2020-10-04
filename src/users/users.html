@@ -12,24 +12,48 @@
 				</h4>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-4 col-md-3 col-lg-2" repeat.for="user of users">
-				<user user.bind="user"></user>
-			</div>
-		</div>
-		<div class="row" show.bind="selectedUser">
-			<div class="col-sm-4">
-				<div class="selected-user">
-					<div class="avatar-box">
-						<img class="avatar" src="${selectedUser.avatarUrl}" alt="">
+		<div class="row content">
+			<div class="col-3">
+				<div class="row user-list">
+					<table class="table table-bordered table-hover">
+						<tbody>
+							<tr repeat.for="user of users" class="user-row" click.delegate="onSelectUser(user)">
+								<td class="user-cell">
+									<img class="avatar" src="${user.avatarUrl}" alt="">
+									<span class="user-name">${user.login}</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="row user-list">
+					<div class="col-12" repeat.for="user of users">
+						<user user.bind="user"></user>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-8">
-				<div class="user-name" show.bind="selectedUser.name">${selectedUser.name}</div>
-				<div class="user-location" show.bind="selectedUser.location">${selectedUser.location}</div>
-				<div class="user-bio" show.bind="selectedUser.bio">${selectedUser.bio}</div>
-				<div class="user-blog" show.bind="selectedUser.blog"><a href="${selectedUser.blog}" target="_blank">${selectedUser.blog}</a></div>
+			<div class="col-6">
+				<div class="row" show.bind="selectedUser">
+					<div class="col-sm-4">
+						<div class="selected-user">
+							<div class="avatar-box">
+								<img class="avatar" src="${selectedUser.avatarUrl}" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="user-name" show.bind="selectedUser.name">${selectedUser.name}</div>
+						<div class="user-location" show.bind="selectedUser.location">${selectedUser.location}</div>
+						<div class="user-bio" show.bind="selectedUser.bio">${selectedUser.bio}</div>
+						<div class="user-blog" show.bind="selectedUser.blog"><a href="${selectedUser.blog}" target="_blank">${selectedUser.blog}</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div repeat.for="category of categories">
+					${category.node.title}
+					<div repeat.for="task of category.tasks[0]">Title: ${task.title}</div>
+				</div>
 			</div>
 		</div>
 	</div>

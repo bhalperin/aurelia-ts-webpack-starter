@@ -1,6 +1,91 @@
 .users-view {
+	height: 100%;
+
 	.header {
 		margin-bottom: 40px;
+	}
+
+	.content {
+		height: 85%;
+
+		.user-list {
+			height: 100%;
+			overflow: auto;
+
+			.table {
+				.user-row {
+					.user-cell {
+						.user-id {
+							display: inline-block;
+							width: 30px;
+						}
+
+						.avatar {
+							width: 32px;
+						}
+
+						.user-name {
+
+						}
+					}
+				}
+			}
+
+			.scene {
+				perspective: 600px;
+		
+				.card-panel {
+					height: 400px;
+					margin-bottom: 20px;
+					position: relative;
+					transform-style: preserve-3d;
+					transition-duration: 1s;
+					transition-property: transform;
+					width: 340px;
+		
+					&.is-flipped {
+						transform: rotateY(180deg);
+					}
+					.card {
+						backface-visibility: hidden;
+						border-radius: 4px;
+						box-shadow: 6px 6px 6px #aaaaaa;
+						height: 100%;
+						position: absolute;
+						width: 100%;
+		
+						&.back {
+							background-color: beige;
+							transform: rotateY(180deg);
+						}
+				
+						.card-img-top {
+							border-radius: 4px 4px 0 0;
+							height: auto;
+							width: 340px;
+						}
+		
+						.card-img-overlay {
+							height: 40px;
+							padding: 5px;
+						}
+				
+						.card-body {
+							.card-title {
+								&.user-name {
+									margin-top: 20px;
+								}
+		
+								.icon {
+									color: #5858c1;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.user-box {
@@ -19,60 +104,6 @@
 				border-radius: 2px;
 				box-shadow: 6px 6px 6px #aaaaaa;
 				width: 100%;
-			}
-		}
-	}
-
-	.scene {
-		perspective: 600px;
-
-		.card-panel {
-			height: 340px;
-			margin-bottom: 20px;
-			position: relative;
-			transform-style: preserve-3d;
-			transition-duration: 1s;
-			transition-property: transform;
-			width: 100%;
-
-			&.is-flipped {
-				transform: rotateY(180deg);
-			}
-			.card {
-				backface-visibility: hidden;
-				border-radius: 4px;
-				box-shadow: 6px 6px 6px #aaaaaa;
-				height: 100%;
-				position: absolute;
-				width: 100%;
-
-				&.back {
-					background-color: beige;
-					transform: rotateY(180deg);
-				}
-		
-				.card-img-top {
-					border-radius: 4px 4px 0 0;
-					height: 260px;;
-				}
-
-				.card-img-overlay {
-					height: 40px;
-					padding: 5px;
-				}
-		
-				.card-body {
-					.card-title {
-						&.user-name {
-							margin-top: 20px;
-						}
-
-						.icon {
-							color: #5858c1;
-							cursor: pointer;
-						}
-					}
-				}
 			}
 		}
 	}
